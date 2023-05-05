@@ -26,10 +26,11 @@ async function sendEmail() {
             email: email,
             msg: message,
             completed: false,
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
+           })
+          //,
+          //   headers: {
+          //     "Content-Type": "application/x-www-form-urlencoded",
+          //   },
         }
       );
   
