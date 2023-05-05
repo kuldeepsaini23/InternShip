@@ -14,25 +14,38 @@ const button = document.getElementById("btn-contact");
 
 console.log("helllloooooo");
 
-function sendEmail() {
+async function sendEmail() {
   console.log("helllloooooo2");
-  fetch(
-    "https://www.grupverse.com/companywebsitemsg?name=ritu&email=sf@GYY.ytf&msg=hi",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        name: `${firstName} ${lastName}`,
-        email: email,
-        msg: message,
-        completed: false,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
+    try {
+      const response = await fetch(
+        `https://www.grupverse.com/companywebsitemsg`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: `${firstName} ${lastName}`,
+            email: email,
+            msg: message,
+            completed: false,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+  
+      const data = await response.json();
+      Swal.fire(
+        'Successfull!',
+        'You email is been Recieved',
+        'success'
+      )
+        
+    } catch (err) {
+      console.log(err);
+      Swal.fire(
+        'Error',
+        'Something Went Wrong, Please try again later',
+        'error'
+      )
     }
-  )
-    .then((response) => response.json())
-    .then((json) => console.log(json))
-    .catch((error)=> console.log(error))
- 
 }
