@@ -1096,21 +1096,21 @@
           <div class="form w-100 pb-2">
             <h4 class="display-3--title mb-5">start your project</h4>
 
-            <form class="row" onsubmit="sendEmail(); reset(); return false">
+            <form class="row" onsubmit="reset(); return false">
               <div class="col-lg-6 col-md mb-3">
                 <input type="text" placeholder="First Name" id="inputFirstName"
-                  class="shadow form-control form-control-lg" />
+                  class="shadow form-control form-control-lg" required/>
               </div>
               <div class="col-lg-6 col-md mb-3">
                 <input type="text" placeholder="Last Name" id="inputLastName"
-                  class="shadow form-control form-control-lg" />
+                  class="shadow form-control form-control-lg" required/>
               </div>
               <div class="col-lg-12 mb-3">
                 <input type="email" placeholder="email address" id="inputEmail"
-                  class="shadow form-control form-control-lg" />
+                  class="shadow form-control form-control-lg" required/>
               </div>
               <div class="col-lg-12 mb-3">
-                <textarea name="message" placeholder="message" id="message" rows="8"
+                <textarea name="message" placeholder="message" id="message" rows="8" required
                   class="shadow form-control form-control-lg"></textarea>
               </div>
               <div class="text-center d-grid mt-1">
