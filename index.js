@@ -1,18 +1,18 @@
 const button = document.getElementById("btn-contact");
 
-button.addEventListener("click", async() => {
+button.addEventListener("click", async () => {
   const firstName = document.getElementById("inputFirstName").value;
   const lastName = document.getElementById("inputLastName").value;
   const email = document.getElementById("inputEmail").value;
   const message = document.getElementById("message").value;
-  console.log("FirstName: ", firstName);
-  console.log("LastName: ", lastName);
+  console.log("First Name: ", firstName);
+  console.log("Last Name: ", lastName);
   console.log("Email: ", email);
   console.log("Message: ", message);
 
   if (firstName.length > 0 || lastName.length > 0 || email.length > 0 || message.length > 0) {
     try {
-      const response = await fetch(
+      const fetchResponse = await fetch(
         `https://www.grupverse.com/companywebsitemsg`, {
           method: "POST",
           body: JSON.stringify({
@@ -21,17 +21,17 @@ button.addEventListener("click", async() => {
             msg: message,
             completed: false,
           })
-          //,
-          //   headers: {
-          //     "Content-Type": "application/x-www-form-urlencoded",
-          //   },
         }
       );
 
-      const data = await response.json();
+      if (!fetchResponse.ok) {
+        throw new Error('Error sending message');
+      }
+
+      const serverResponse = await fetchResponse.json();
       Swal.fire(
-        'Successfull!',
-        'You email is been Recieved',
+        'Successful!',
+        'Your email has been received.',
         'success'
       )
 
@@ -39,7 +39,7 @@ button.addEventListener("click", async() => {
       console.log(err);
       Swal.fire(
         'Error',
-        'Something Went Wrong, Please try again later',
+        'Something went wrong. Please try again later.',
         'error'
       )
     }
